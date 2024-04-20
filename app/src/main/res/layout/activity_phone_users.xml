@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PhoneUsers">
+
+    <TextView
+        android:id="@+id/textViewPhoneUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Пользователи телефонов"
+        android:textSize="28dp" />
+
+    <ImageView
+        android:id="@+id/imageViewPhoneUsers"
+        android:layout_width="match_parent"
+        android:layout_height="299dp"
+        android:layout_below="@+id/textPhonePhoneUsers"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/photo" />
+
+    <EditText
+        android:id="@+id/editTextPhoneUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewPhoneUsers"
+        android:layout_marginTop="10dp"
+        android:hint="Введите идентификатор пользователя"
+        android:minHeight="48dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFindUser"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPhoneUsers"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Найти"
+        android:textSize="16dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddUser"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPhoneUsers"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:text="Добавить"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/textUserPhoneUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnFindUser"
+        android:layout_marginTop="15dp"
+        android:text=""
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textPhonePhoneUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textUserPhoneUsers"
+        android:layout_marginTop="9dp"
+        android:text=""
+        android:textSize="14sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/imageViewPhoneUsers"/>
+
+</RelativeLayout>

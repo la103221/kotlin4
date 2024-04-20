@@ -1,0 +1,5 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Practik3" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/my_primary</item>
+    </style>
+</resources>
