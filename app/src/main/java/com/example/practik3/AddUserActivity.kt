@@ -6,6 +6,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 class AddUserActivity : AppCompatActivity() {
     private lateinit var editTextId: EditText
@@ -15,6 +21,7 @@ class AddUserActivity : AppCompatActivity() {
     private lateinit var dbHelper: UserDatabaseHelper
 
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_user)
@@ -30,8 +37,9 @@ class AddUserActivity : AppCompatActivity() {
             val id = editTextId.text.toString()
             val name = editTextName.text.toString()
             val phoneModel = editTextPhoneModel.text.toString()
-            dbHelper.insertUser(id , name, phoneModel)
-            finish()
+            CoroutineScope(Dispatchers.IO).launch  {
+                dbHelper.insertUser(name, phoneModel)
+            }
             val intent = Intent(this, PhoneUsers::class.java)
             startActivity(intent)
         }

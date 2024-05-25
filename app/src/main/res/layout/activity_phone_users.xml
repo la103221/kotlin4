@@ -3,76 +3,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".PhoneUsers">
 
-    <TextView
-        android:id="@+id/textViewPhoneUsers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Пользователи телефонов"
-        android:textSize="28dp" />
 
-    <ImageView
-        android:id="@+id/imageViewPhoneUsers"
-        android:layout_width="match_parent"
-        android:layout_height="299dp"
-        android:layout_below="@+id/textPhonePhoneUsers"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/photo" />
-
-    <EditText
-        android:id="@+id/editTextPhoneUsers"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textViewPhoneUsers"
-        android:layout_marginTop="10dp"
-        android:hint="Введите идентификатор пользователя"
-        android:minHeight="48dp" />
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Telephone base"
+        app:titleTextColor="@color/white" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnFindUser"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPhoneUsers"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Найти"
-        android:textSize="16dp" />
-
-    <com.google.android.material.button.MaterialButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAddUser"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPhoneUsers"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="12dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16.dp"
+        android:src="@drawable/ic_add"
         android:text="Добавить"
         android:textSize="16dp" />
 
-    <TextView
-        android:id="@+id/textUserPhoneUsers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnFindUser"
-        android:layout_marginTop="15dp"
-        android:text=""
-        android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/textPhonePhoneUsers"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/search_layout"
+        class="androidx.appcompat.app.AlertController$RecycleListView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textUserPhoneUsers"
-        android:layout_marginTop="9dp"
-        android:text=""
-        android:textSize="14sp" />
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="27dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextPhoneUsers"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:hint="Введите идентификатор пользователя"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnFindUser"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnFindUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:forceHasOverlappingRendering="true"
+            android:src="@drawable/ic_search"
+            android:text="Найти"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/imageViewPhoneUsers"/>
+        android:layout_below="@id/search_layout"/>
 
 </RelativeLayout>
