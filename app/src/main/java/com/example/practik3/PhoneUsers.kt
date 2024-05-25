@@ -31,6 +31,7 @@ class PhoneUsers : AppCompatActivity() {
     private lateinit var editTextPhoneUsers: EditText
     private lateinit var btnFindUser: FloatingActionButton
     private lateinit var btnAddUser: FloatingActionButton
+    private var usersT: List<User>? = null
 
 
 
@@ -61,6 +62,8 @@ class PhoneUsers : AppCompatActivity() {
 
         // Нажатие на кнопку "Найти пользователя"
         btnFindUser.setOnClickListener {
+            usersT?.filter { user -> user.name.contains(editTextPhoneUsers.text) }
+                ?.let { it1 -> setupRecyclerView(it1) }
             val userId = editTextPhoneUsers.text.toString()
             // Поиск пользователя в базе данных
             val dbHelper = UserDatabaseHelper(this)
@@ -86,6 +89,7 @@ class PhoneUsers : AppCompatActivity() {
             val users = dbHelper.readAllUsers()
             withContext(Dispatchers.IO) {
                 users.collect {
+                    usersT = it
                     withContext(Dispatchers.Main) {
                         setupRecyclerView(it)
                     }
